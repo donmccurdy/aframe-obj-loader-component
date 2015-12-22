@@ -1,0 +1,35 @@
+{
+  "name": "aframe-obj-mtl-loader",
+  "version": "0.0.1",
+  "description": "A-Frame VR loader component for .OBJ models and .MTL materials.",
+  "main": "index.js",
+  "scripts": {
+    "dist": "webpack browser.js dist/aframe-obj-mtl-loader-component.js && webpack -p browser.js dist/aframe-obj-mtl-loader-component.min.js",
+    "postpublish": "npm run dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngokevin/aframe-text-component.git"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-component",
+    "aframe-vr",
+    "vr",
+    "mozvr",
+    "webvr"
+  ],
+  "author": "Don McCurdy <dm@donmccurdy.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/donmccurdy/aframe-obj-mtl-loader/issues"
+  },
+  "homepage": "https://github.com/donmccurdy/aframe-obj-mtl-loader",
+  "devDependencies": {
+    "aframe-core": "*",
+    "browserify": "^12.0.1",
+    "browserify-css": "^0.8.3",
+    "watchify": "^3.6.1",
+    "webpack": "^1.12.9"
+  }
+}

@@ -1,7 +1,6 @@
 /**
  * OBJ + MTL Loader for A-Frame.
  */
-require('./lib/vendor/MTLLoader.js');
 require('./lib/vendor/OBJLoader.js');
 require('./lib/vendor/OBJMTLLoader.js');
 
@@ -59,4 +58,4 @@ module.exports.component = {
     if (!parsedSrc) { return; }
     return parsedSrc[1];
   }
-});
+};
