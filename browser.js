@@ -7,7 +7,7 @@
 
   // Register all components here.
   var components = {
-    text: require('./index').component
+    'obj-mtl-loader': require('./index').component
   };
 
   Object.keys(components).forEach(function (name) {

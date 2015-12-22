@@ -53,7 +53,7 @@
 
 	  // Register all components here.
 	  var components = {
-	    text: __webpack_require__(1).component
+	    'obj-mtl-loader': __webpack_require__(1).component
 	  };
 
 	  Object.keys(components).forEach(function (name) {
