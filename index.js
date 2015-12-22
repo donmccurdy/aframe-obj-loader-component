@@ -15,37 +15,45 @@ module.exports.component = {
     var el = this.el;
     var data = this.data;
     var model = this.model;
-    var url = this.parseUrl(data.src);
+    var objUrl = this.parseUrl(data.src);
     var mtlUrl = this.parseUrl(data.mtl);
     if (model) { el.object3D.remove(model); }
-    if (!url) {
-      console.warn('Model URL not provided');
-      return;
-    }
-    this.load(url, mtlUrl);
-  },
-
-  load: function (url, mtlUrl) {
-    var self = this;
-    var el = this.el;
-    var loader;
-    if (mtlUrl) {
+    if (objUrl && mtlUrl) {
       if (el.components.material) {
         console.warn('Material component is ignored when a .MTL is provided');
       }
-      loader = new THREE.OBJMTLLoader();
-      loader.load(url, mtlUrl, function (object) {
-        self.model = object;
-        el.object3D.add(object);
-      });
+      this.loadObjMtl(objUrl, mtlUrl);
+    } else if (objUrl) {
+      this.loadObj(objUrl);
     } else {
-      loader = new THREE.OBJLoader();
-      loader.load(url, function (object) {
-        self.model = object;
-        self.applyMaterial();
-        el.object3D.add(object);
-      });
+      console.warn('Model URL not provided');
     }
+  },
+
+  /**
+   * Load a .OBJ using THREE.OBJLoader.
+   * @param  {string} objUrl
+   */
+  loadObj: function (objUrl) {
+    var loader = new THREE.OBJLoader();
+    loader.load(objUrl, function (object) {
+      this.model = object;
+      this.applyMaterial();
+      this.el.object3D.add(object);
+    }.bind(this));
+  },
+
+  /**
+   * Load a .OBJ and .MTL using THREE.OBJMTLLoader.
+   * @param  {string} objUrl
+   * @param  {string} mtlUrl
+   */
+  loadObjMtl: function (objUrl, mtlUrl) {
+    var loader = new THREE.OBJMTLLoader();
+    loader.load(objUrl, mtlUrl, function (object) {
+      this.model = object;
+      this.el.object3D.add(object);
+    }.bind(this));
   },
 
   /**
