@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dist": "webpack browser.js dist/aframe-obj-mtl-loader-component.js && webpack -p browser.js dist/aframe-obj-mtl-loader-component.min.js",
-    "postpublish": "npm run dist"
+    "test": "echo 'tests not implemented'",
+    "preversion": "npm test",
+    "version": "npm run dist && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
