@@ -24,3 +24,10 @@ Use.
                       mtl: url(./tree.mtl);">
 </a-entity>
 ```
+
+## Properties
+
+Property | Required | Description
+---------|----------|------------
+src      | Yes      | URL for 3D .OBJ model asset.
+mtl      | No       | URL for .MTL material library asset.
