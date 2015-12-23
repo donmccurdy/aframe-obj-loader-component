@@ -13,14 +13,14 @@ $ npm install aframe-obj-loader-component
 Register.
 
 ```js
-AFrame = require('aframe-core');
-AFrame.registerComponent('obj-loader', require('aframe-obj-loader-component'));
+AFRAME = require('aframe-core');
+AFRAME.registerComponent('obj-loader', require('aframe-obj-loader-component'));
 ```
 
 Use.
 
 ```html
-<a-entity obj-mtl-loader="src: url(../../models/tree.obj);
-                          mtl: url(../../models/tree.mtl);">
+<a-entity obj-mtl-loader="src: url(./tree.obj);
+                          mtl: url(./tree.mtl);">
 </a-entity>
 ```
