@@ -2,7 +2,30 @@
 
 A-Frame VR loader component for .OBJ models and .MTL materials.
 
-## Usage
+## Usage (global)
+
+```html
+<html>
+	<head>
+		<!-- ... -->
+			<!-- A-Frame VR Library -->
+			<script src="https://aframe.io/releases/latest/aframe.js"></script>
+
+			<!-- Component -->
+			<script src="dist/aframe-obj-loader-component.js"></script>
+		<!-- ... -->
+	</head>
+	<body>
+		<!-- ... -->
+			<a-entity obj-loader="src: url(./tree.obj);
+			                      mtl: url(./tree.mtl);">
+			</a-entity>
+		<!-- ... -->
+	</body>
+</html>
+```
+
+## Usage (npm)
 
 Install.
 
