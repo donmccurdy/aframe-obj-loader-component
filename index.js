@@ -6,6 +6,8 @@ require('./lib/vendor/MTLLoader.js');
 require('./lib/vendor/OBJMTLLoader.js');
 
 module.exports.component = {
+  dependencies: [ 'material' ],
+
   schema: {
     src: { default: '' },
     mtl: { default: '' }
@@ -31,6 +33,19 @@ module.exports.component = {
   },
 
   /**
+   * Load a .OBJ and .MTL using THREE.OBJMTLLoader.
+   * @param  {string} objUrl
+   * @param  {string} mtlUrl
+   */
+  loadObjMtl: function (objUrl, mtlUrl) {
+    var loader = new THREE.OBJMTLLoader();
+    loader.load(objUrl, mtlUrl, function (object) {
+      this.model = object;
+      this.el.object3D.add(object);
+    }.bind(this));
+  },
+
+  /**
    * Load a .OBJ using THREE.OBJLoader.
    * @param  {string} objUrl
    */
@@ -44,16 +59,16 @@ module.exports.component = {
   },
 
   /**
-   * Load a .OBJ and .MTL using THREE.OBJMTLLoader.
-   * @param  {string} objUrl
-   * @param  {string} mtlUrl
+   * Apply aframe material component (not .MTL) to a loaded model.
    */
-  loadObjMtl: function (objUrl, mtlUrl) {
-    var loader = new THREE.OBJMTLLoader();
-    loader.load(objUrl, mtlUrl, function (object) {
-      this.model = object;
-      this.el.object3D.add(object);
-    }.bind(this));
+  applyMaterial: function () {
+    var material = this.el.components.material.material;
+    if (!this.model) { return; }
+    this.model.traverse(function (child) {
+      if (child instanceof THREE.Mesh) {
+        child.material = material;
+      }
+    });
   },
 
   /**
