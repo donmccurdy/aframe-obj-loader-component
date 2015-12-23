@@ -20,7 +20,7 @@ AFRAME.registerComponent('obj-loader', require('aframe-obj-loader-component'));
 Use.
 
 ```html
-<a-entity obj-mtl-loader="src: url(./tree.obj);
-                          mtl: url(./tree.mtl);">
+<a-entity obj-loader="src: url(./tree.obj);
+                      mtl: url(./tree.mtl);">
 </a-entity>
 ```
