@@ -1,4 +1,4 @@
-# aframe-obj-loader-component
+# A-Frame `obj-loader` Component
 
 A-Frame VR loader component for .OBJ models and .MTL materials.
 
