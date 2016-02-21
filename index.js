@@ -3,7 +3,6 @@
  */
 require('./lib/vendor/OBJLoader.js');
 require('./lib/vendor/MTLLoader.js');
-require('./lib/vendor/OBJMTLLoader.js');
 
 module.exports.component = {
   dependencies: [ 'material' ],
@@ -38,11 +37,18 @@ module.exports.component = {
    * @param  {string} mtlUrl
    */
   loadObjMtl: function (objUrl, mtlUrl) {
-    var loader = new THREE.OBJMTLLoader();
-    loader.load(objUrl, mtlUrl, function (object) {
-      this.model = object;
-      this.el.object3D.add(object);
-    }.bind(this));
+    var self = this;
+    var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setBaseUrl(mtlUrl.substr(0, mtlUrl.lastIndexOf('/') + 1));
+    mtlLoader.load(mtlUrl, function(materials) {
+      materials.preload();
+      var objLoader = new THREE.OBJLoader();
+      objLoader.setMaterials(materials);
+      objLoader.load(objUrl, function (object) {
+        self.model = object;
+        self.el.object3D.add(object);
+      });
+    });
   },
 
   /**
