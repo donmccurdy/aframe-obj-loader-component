@@ -4,7 +4,7 @@
 require('./lib/vendor/OBJLoader.js');
 require('./lib/vendor/MTLLoader.js');
 
-module.exports.component = {
+module.exports = {
   dependencies: [ 'material' ],
 
   schema: {
