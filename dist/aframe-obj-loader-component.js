@@ -50,19 +50,7 @@
 	    console.error('Component attempted to register before AFRAME was available.');
 	    return;
 	  }
-
-	  // Register all components here.
-	  var components = {
-	    'obj-loader': __webpack_require__(1).component
-	  };
-
-	  Object.keys(components).forEach(function (name) {
-	    if (AFRAME.aframeCore) {
-	      AFRAME.aframeCore.registerComponent(name, components[name]);
-	    } else {
-	      AFRAME.registerComponent(name, components[name]);
-	    }
-	  });
+	  (AFRAME.aframeCore || AFRAME).registerComponent('obj-loader', __webpack_require__(1));
 	})(window.AFRAME);
 
 
@@ -76,7 +64,7 @@
 	__webpack_require__(2);
 	__webpack_require__(3);
 
-	module.exports.component = {
+	module.exports = {
 	  dependencies: [ 'material' ],
 
 	  schema: {
