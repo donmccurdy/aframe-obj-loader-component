@@ -1,6 +1,6 @@
 {
   "name": "aframe-obj-loader-component",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A-Frame VR loader component for .OBJ models and .MTL materials.",
   "main": "index.js",
   "scripts": {
