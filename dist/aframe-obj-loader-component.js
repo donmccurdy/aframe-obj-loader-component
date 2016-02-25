@@ -107,6 +107,7 @@
 	      objLoader.load(objUrl, function (object) {
 	        self.model = object;
 	        self.el.object3D.add(object);
+	        self.el.emit('model-loaded', {format: 'obj', model: object});
 	      });
 	    });
 	  },
@@ -116,12 +117,14 @@
 	   * @param  {string} objUrl
 	   */
 	  loadObj: function (objUrl) {
+	    var self = this;
 	    var loader = new THREE.OBJLoader();
 	    loader.load(objUrl, function (object) {
-	      this.model = object;
-	      this.applyMaterial();
-	      this.el.object3D.add(object);
-	    }.bind(this));
+	      self.model = object;
+	      self.applyMaterial();
+	      self.el.object3D.add(object);
+	      self.el.emit('model-loaded', {format: 'obj', model: object});
+	    });
 	  },
 
 	  /**
